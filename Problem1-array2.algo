@@ -1,0 +1,51 @@
+ALGORITHM SumOfRepeatingInArraySecond
+VAR
+    sum: INTEGER :=0 ;
+    i, j, c1, c2 : INTEGER ;
+CONST
+    set1, set2 : ARRAY_OF INTEGER[] ;
+
+
+BEGIN
+
+/* the second method for this problem -using arrays - consists of using an integer which's role is a counter that checks
+if there are duplicate numbers in both arrays and immediately adds the numbers in SUM */
+
+
+//testing if there are values from set2 in set1
+
+FOR i FROM 0 TO set1.length -1 STEP 1  DO
+    c1 := 0;
+    FOR j FROM 0 TO set2.length -1  STEP 1  DO
+        IF (set1[i] <> set2[j]) THEN
+            c1 := c1 + 1; 
+        END_IF
+    END_FOR
+
+    IF (c1 = set2.length ) THEN
+            sum := sum + set1[i];
+        END_IF
+END_FOR
+
+
+
+//testing if there are values from set1 in set2
+
+FOR i FROM 0 TO set2.length -1 STEP 1  DO
+    c1 := 0;
+    FOR j FROM 0 TO set1.length -1  STEP 1  DO
+        IF (set1[j] <> set2[i]) THEN
+            c2 := c2 + 1; 
+        END_IF
+ 
+    END_FOR
+
+    IF (c2 = set1.length ) THEN
+            sum := sum + set2[i];
+        END_IF
+END_FOR
+
+
+    Write('The sum of all distinct elements from the sets is', sum);
+
+END

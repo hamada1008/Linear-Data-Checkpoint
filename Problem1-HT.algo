@@ -1,0 +1,50 @@
+ALGORITHM SumOfRepeatingInHT
+CONST
+    set1, set2 : ARRAY_OF INTEGER[] ;
+VAR
+    sum : INTEGER :=0 ;
+    i, j, s: INTEGER ;
+    htab : HASH_TABLE<INTEGER,INTEGER>
+    all : ARRAY_OF INTEGER[];
+
+
+BEGIN
+
+/* This method consists of adding the first set to the hash table then adding the values of the 2nd set to the hash table: looking for
+repeating values to increase the count by 1 then adding the non repeating values to the table with a count of 1 */
+
+
+
+FOR i FROM 0 TO set1.length -1  STEP 1  DO
+    all[i] := set1[i]
+    htab.insert(set1[i],1)
+END_FOR 
+
+
+FOR j FROM 0 TO set2.length -1  STEP 1  DO
+
+       
+    IF (htab.lookup(set2[j] = TRUE) THEN
+        htab.insert(set2[j],2)
+        BREAK;
+
+
+    ELSE 
+      htab.insert(set2[j],1)
+
+      all[j] = set2 [j]
+    END_IF
+
+END_FOR
+
+FOR i FROM 0 TO all.length -1  STEP step  DO
+  IF (htab.get(all[i]) = 1 ) THEN
+      sum := sum + all[i]
+  END_IF 
+
+END_FOR
+
+    Write('The sum of all distinct elements from the sets is', sum);
+
+
+END

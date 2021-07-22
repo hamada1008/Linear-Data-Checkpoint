@@ -1,0 +1,37 @@
+ALGORITHM SumOfRepeatingInArrayFirst
+VAR
+    set1, set2 : ARRAY_OF INTEGER[] ;
+    sum : INTEGER :=0 ;
+    i, j: INTEGER ;
+
+
+BEGIN
+
+/* the first method for this problem -using arrays - consists of finding the repeating elements in both arrays and changing their value
+to 0 --because 0 doesnt affect SUM operation -- */
+/* the recommanded method to replace values in an array is to clone it and modify the new array, but since we will be needing only the sum
+& not the arrays at the execution, i decided to modify the original arrays */
+
+
+FOR i FROM 0 TO set1.length -1 STEP 1  DO
+    FOR j FROM 0 TO set2.length -1  STEP 1  DO
+        IF (set1[i] = set2[j]) THEN
+            set1[i] :=0 ;
+            set2[j] :=0 ;
+        END_IF
+    END_FOR
+END_FOR
+
+FOR i FROM 0 TO set1.length -1 STEP 1  DO
+    sum := sum + set1[i];
+END_FOR
+
+FOR j FROM 0 TO set2.length -1  STEP 1  DO
+    sum := sum + set2[j];
+END_FOR
+
+
+    Write('The sum of all distinct elements from the sets is', sum);
+
+//I tried to test the algorith with Javascript (file: P1M1.js), feel free to change the set1 & set2 values in Codepen to test it   
+END
