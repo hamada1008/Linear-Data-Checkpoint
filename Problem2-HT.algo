@@ -1,11 +1,12 @@
-ALGORITHM SumOfRepeatingInHT
+ALGORITHM SumOFOverlappingHT
 CONST
     set1, set2 : ARRAY_OF INTEGER[] ;
 VAR
-    sum : INTEGER :=0 ;
+    sum , k: INTEGER :=0 ;
     i, j: INTEGER ;
     htab : HASH_TABLE<INTEGER,INTEGER>;
-    all : ARRAY_OF INTEGER[];
+    all: ARRAY_OF INTEGER[];
+    nset: ARRAY_OF INTEGER[0];
 
 
 BEGIN
@@ -37,13 +38,21 @@ FOR j FROM 0 TO set2.length -1  STEP 1  DO
 END_FOR
 
 FOR i FROM 0 TO all.length -1  STEP step  DO
-  IF (htab.get(all[i]) = 1 ) THEN
-      sum := sum + all[i];
+  IF (htab.get(all[i]) = 2 ) THEN   //same method as First problem but we need the repeating numbers, which have the value of 2 in hashtable
+    sum := sum + all[i]*2;          // which is opposed as to values = 1 corresponding the non repeating numbers
+    nset.length = nset.length + 1 ;
+    nset[k] = set1[i];
+    k := k + 1; 
   END_IF 
 
 END_FOR
 
     Write('The sum of all distinct elements from the sets is', sum);
+    IF (nset.length > 0 ) THEN
+    Write('Explanation: Common elements are' , nset);
+    ELSE Write('Explanation: There are no Common elements in the 2 sets');
 
+    END_IF
+    
 
 END

@@ -1,0 +1,49 @@
+ALGORITHM SumOFOverlappingArray
+VAR
+    set1, set2 : ARRAY_OF INTEGER[] ;
+    sum , k: INTEGER :=0 ;
+    i, j: INTEGER ;
+    var test : BOOLEAN;
+    nset : ARRAY_OF INTEGER[0]
+
+BEGIN
+
+/* This method consists of searching both the sets for repeating numbers, if the number is not repeated in both sets the value of the array
+containing that number becomes 0 & if the number is repeating then the array[index] stays inact  -- */
+/* the recommanded method to replace values in an array is to clone it and modify the new array, but since we will be needing only the sum
+& not the actual arrays at the execution, i decided to modify the original arrays */
+
+
+FOR i FROM 0 TO set1.length -1 STEP 1  DO
+    test := False;
+    FOR j FROM 0 TO set2.length -1  STEP 1  DO
+        IF (set1[i] = set2[j]) THEN
+            test := True;
+            BREAK;
+        END_IF
+    END_FOR
+   IF (test = False) THEN
+       set1[i] := 0;
+   END_IF
+END_FOR
+
+
+
+FOR i FROM 0 TO set1.length -1 STEP 1  DO
+    IF (set1[i] <> 0) THEN
+    nset.length = nset.length + 1 ;
+    nset[k] = set1[i];
+    k := k + 1;
+    sum := sum + set1 [i];
+    END_IF
+END_FOR
+
+    sum:= sum*2; /* because the total sum of overlapping numbers is the sum of repeating numbers in first array + second array = sum numbers
+                    first array x 2 */
+
+    Write('The sum of all distinct elements from the sets is', sum);
+    IF (nset.length > 0 ) THEN
+    Write('Explanation: Common elements are' , nset);
+    ELSE Write('Explanation: There are no Common elements in the 2 sets');
+
+END
