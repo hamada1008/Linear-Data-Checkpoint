@@ -4,7 +4,7 @@ VAR
     sum , k: INTEGER :=0 ;
     i, j: INTEGER ;
     var test : BOOLEAN;
-    nset : ARRAY_OF INTEGER[0]
+    nset : ARRAY_OF INTEGER[]
 
 BEGIN
 
@@ -31,7 +31,6 @@ END_FOR
 
 FOR i FROM 0 TO set1.length -1 STEP 1  DO
     IF (set1[i] <> 0) THEN
-    nset.length = nset.length + 1 ;
     nset[k] = set1[i];
     k := k + 1;
     sum := sum + set1 [i];

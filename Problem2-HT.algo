@@ -5,8 +5,7 @@ VAR
     sum , k: INTEGER :=0 ;
     i, j: INTEGER ;
     htab : HASH_TABLE<INTEGER,INTEGER>;
-    all: ARRAY_OF INTEGER[];
-    nset: ARRAY_OF INTEGER[0];
+    all, nset: ARRAY_OF INTEGER[];
 
 
 BEGIN
@@ -40,7 +39,6 @@ END_FOR
 FOR i FROM 0 TO all.length -1  STEP step  DO
   IF (htab.get(all[i]) = 2 ) THEN   //same method as First problem but we need the repeating numbers, which have the value of 2 in hashtable
     sum := sum + all[i]*2;          // which is opposed as to values = 1 corresponding the non repeating numbers
-    nset.length = nset.length + 1 ;
     nset[k] = set1[i];
     k := k + 1; 
   END_IF 
